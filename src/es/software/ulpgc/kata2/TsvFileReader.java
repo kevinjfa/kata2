@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TsvFileReader {
@@ -24,5 +25,13 @@ public class TsvFileReader {
 
     private static List<Title> readWith(BufferedReader reader) {
         TsvTitleDeserializer des = new TsvTitleDeserializer();
+        List<Title> titles = new ArrayList<>();
+        while(true) {
+            String line = reader.readLine();
+            if (line == null) break;
+            Title t = des.deserialize(line);
+            titles.add(t);
+        }
+        return titles;
     }
 }
