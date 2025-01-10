@@ -23,7 +23,7 @@ public class TsvFileReader {
         }
     }
 
-    private static List<Title> readWith(BufferedReader reader) {
+    private static List<Title> readWith(BufferedReader reader) throws IOException {
         TsvTitleDeserializer des = new TsvTitleDeserializer();
         List<Title> titles = new ArrayList<>();
         while(true) {
